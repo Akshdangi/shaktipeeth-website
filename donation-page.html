@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donations - Shaktipeeth Tourism</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            color: black;
+            padding: 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffe600;
+        }
+
+        .btn {
+            background: #ff4b5c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff304f;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            margin-top: 100px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .preset-amounts {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .preset-amount {
+            background: #ff758c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .preset-amount:hover {
+            background: #ff4b5c;
+        }
+
+        footer {
+            text-align: center;
+            color: black;
+            margin-top: 30px;
+            padding: 15px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Make a Donation</h1>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-links">
+            <a href="shaktipeeth-homepage.html">Home</a>
+            <a href="shaktipeeth-registration.html">Registration</a>
+            <a href="about-page.html">About</a>
+            <a href="book-tour-complete.html">Book Tour</a>
+            <a href="map.html">Sacred Map</a>
+        </div>
+        <button class="btn">Login</button>
+    </nav>
+
+    <div class="form-container">
+        <form id="donationForm">
+            <div class="form-group">
+                <label for="temple">Select Temple *</label>
+                <select id="temple" required>
+                    <option value="">Choose a temple</option>
+                    <option value="kamakhya">Kamakhya Temple</option>
+                    <option value="kalighat">Kalighat Temple</option>
+                    <option value="jwalamukhi">Jwalamukhi Temple</option>
+                    <option value="dakshineswar">Dakshineswar Temple</option>
+                    <option value="Vaishno Devi">Vaishno Devi Temple</option>
+                    <option value="Ambaji Temple">Ambaji Temple</option>
+                    <option value="Ratnavali Temple">Ratnavali Temple</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="customAmount">Donation Amount (₹) *</label>
+                <input type="number" id="customAmount" required min="100" placeholder="Enter amount">
+                <div class="preset-amounts">
+                    <button type="button" class="preset-amount" data-amount="501">₹501</button>
+                    <button type="button" class="preset-amount" data-amount="1001">₹1001</button>
+                    <button type="button" class="preset-amount" data-amount="2001">₹2001</button>
+                    <button type="button" class="preset-amount" data-amount="5001">₹5001</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="donorName">Donor Name *</label>
+                <input type="text" id="donorName" required placeholder="Enter full name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter email for receipt">
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile Number *</label>
+                <input type="tel" id="mobile" required pattern="[0-9]{10}" placeholder="Enter 10-digit number">
+            </div>
+
+            <div class="form-group">
+                <label for="donationPurpose">Purpose of Donation</label>
+                <select id="donationPurpose">
+                    <option value="general">General Fund</option>
+                    <option value="annadaan">Annadaan</option>
+                    <option value="development">Development</option>
+                    <option value="puja">Special Puja</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2025 Shaktipeeth Tourism. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.preset-amount').forEach(button => {
+            button.addEventListener('click', function () {
+                document.getElementById('customAmount').value = this.getAttribute('data-amount');
+            });
+        });
+    </script>
+</body>
+</html>
